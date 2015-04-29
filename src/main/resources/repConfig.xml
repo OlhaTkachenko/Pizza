@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation=
+        "http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+"> !-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                    http://www.springframework.org/schema/context 
+                    http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="ua.shad.yandex.pizzadelivery.service"/>
+    <!-- <bean name="pizzaService" class="ua.shad.yandex.pizzadelivery.service.SimplePIzzaService">
+        <constructor-arg ref="pizzRepo"/>
+    </bean> !-->
+    
+    <bean name="orderService" class="ua.shad.yandex.pizzadelivery.service.SimpleOrderService">
+        <lookup-method name="createNewOrder" bean="order"/>  
+    </bean>
+    
+    <!--<bean id="order" class="ua.shad.yandex.pizzadelivery.domain.Order" scope="prototype">
+    </bean> !-->
+
+    <context:component-scan base-package="ua.shad.yandex.pizzadelivery.domain">
+        
+    </context:component-scan>
+</beans>
